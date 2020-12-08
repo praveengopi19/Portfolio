@@ -1,4 +1,4 @@
-var version = 1
+var version = 2
 var cacheName = `praveengopi19-${version}`
 
 var isOnline = true
