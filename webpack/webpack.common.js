@@ -9,7 +9,6 @@ module.exports = {
     },
     module: {
         rules: [
-
             {
                 type: "javascript/auto",
                 test: /\.json$/,
@@ -22,6 +21,20 @@ module.exports = {
                     },
                 ],
             },
+            {
+                test: /(sw.js)$/,
+                use: [{
+                    loader: 'worker-loader',
+                    options: {
+                        publicPath: '/',
+                        filename: 'sw.js'
+                    }
+                },
+                {
+                    loader: 'babel-loader',
+                }
+                ]
+            }
         ]
     },
     plugins: [

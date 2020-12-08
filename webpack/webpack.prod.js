@@ -57,7 +57,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.js/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /\.(sw.js)$/],
                 loader: 'babel-loader'
             },
             {

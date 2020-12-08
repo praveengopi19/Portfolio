@@ -45,7 +45,7 @@ module.exports = merge(common, {
                 options: {
                     publicPath: '/media',
                     outputPath: 'media',
-                    filename: '[name].[ext]'
+                    name: '[name].[ext]'
                 }
             },
             {
