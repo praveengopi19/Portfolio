@@ -16,6 +16,12 @@
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="pk.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#4169e1">
+    <meta name="author" content="Praveen Kumar">
+    <meta name="description" content="Hello World, I am Praveen Kumar. Full-Stack Developer || Designer">
+    <meta name="keywords"
+        content="praveengopi19, spotify profile action, presonal resume website generator, front-end developer, web developer, react, nodejs, react js,express">
 
     <title>Praveen Kumar</title>
 
@@ -40,8 +46,9 @@
             cursor: pointer;
         }
 
-        h4 {
+        h5 {
             margin: 15px;
+            margin-bottom: 20px;
         }
 
         section {
@@ -302,8 +309,8 @@
                     </g>
                 </svg>
             </div>
-            <h4>It looks like your offline</h4>
-            <button class="errorbuttom" onclick="reloadWindow()">Reload</button>
+            <h5>It looks like you are offline</h5>
+            <button class="errorbuttom" onclick="reloadWindow()">Try Again</button>
         </section>
 
         <script>
@@ -313,9 +320,11 @@
                     navigator.serviceWorker.controller.postMessage({ statusUpdate: { isOnline: true } })
                 }
             })
+
             function reloadWindow(e) {
                 window.location.reload(true)
             }
+
         </script>
     </div>
 </body>

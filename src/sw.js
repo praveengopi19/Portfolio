@@ -9,8 +9,7 @@ var toBeCached = [
     '/media/Inter-Medium.woff2',
     '/media/Inter-Bold.woff2',
     '/media/errorboun.svg',
-    '/offline.html',
-    '/offline'
+    '/offline.html'
 ]
 
 self.addEventListener('install', function () {
@@ -58,7 +57,7 @@ function onSwMessage({ data }) {
 
     if ('statusUpdate' in data) {
         isOnline = data.statusUpdate.isOnline
-        console.log(" user " + isOnline)
+
     }
 }
 
@@ -113,30 +112,50 @@ async function router(req) {
 
 
         if (!isOnline) {
-            console.log("No internet")
+            //  console.log("No internet")
             let html = await cache.match('/offline.html')
-
-            console.log(html)
 
             return html
         }
 
+        if (req.headers.get("Accept").includes("text/html")) {
 
-        //reqUrl since origin is same
-        res = await fetch(reqURL, {
-            method: req.method,
-            headers: req.headers,
-            credentials: "same-origin",
-            cache: 'no-store'
-        })
+            res = await fetch(req, {
+                method: req.method,
+                headers: req.headers,
+                credentials: "same-origin",
+                redirect: 'follow'
+            })
 
-        return res
+            if (res && (res.ok || res.status == 404)) {
+                return res
+            }
+
+        } else {
+            try {
+                //reqUrl since origin is same
+                res = await fetch(req, {
+                    method: req.method,
+                    headers: req.headers,
+                    credentials: "same-origin",
+                    cache: 'no-store'
+                })
+
+                console.log(res)
+
+                if (res && (res.ok || res.status == 404)) {
+                    return res
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
 
 
-        // if (res && res.ok) {
-        //     await cache.put(reqURL, res.clone())
-        //     return res
-        // }
+        let html = await cache.match('/offline.html')
+        return html
+
     }
     else {
         let res = await fetch(req)

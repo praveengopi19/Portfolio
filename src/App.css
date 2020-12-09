@@ -8,6 +8,12 @@ body {
   scroll-behavior   : smooth;
   -ms-overflow-style: none;
   scrollbar-width   : none;
+  margin            : 0;
+  font-family       : -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing : antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::-webkit-scrollbar {
@@ -28,7 +34,9 @@ p {
   color              : #63738b;
 }
 
-input[type=text]::-ms-clear { display: none; }
+input[type=text]::-ms-clear {
+  display: none;
+}
 
 .error404 {
   height: 35vmax;

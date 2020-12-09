@@ -11,7 +11,7 @@ const DesktopMain = lazy(() => import("./components/Desktop/DesktopMain"));
 const MobileMain = lazy(() => import("./components/Mobile/MobileMain"));
 
 const Error = () => (<section><div className="error404"><Error404 /></div>
-  <Link to="/"><button className="errorbuttom">Return Home</button></Link></section>);
+  <a href="/"><button className="errorbuttom">Return Home</button></a></section>);
 
 function App() {
   var ua = navigator.userAgent;
