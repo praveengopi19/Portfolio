@@ -560,7 +560,8 @@ ul {
 }
 
 .cmdlink:hover {
-  text-decoration: underline;
+  color          : #4169E1;
+  text-decoration: none;
 }
 
 /* /#FF3263 */
