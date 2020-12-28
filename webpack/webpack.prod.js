@@ -24,24 +24,7 @@ module.exports = merge(common, {
             filename: 'styles/[name]-[contentHash].css',
             chunkFilename: 'styles/[name]-[contentHash:8].chunk.css'
         }),
-        //  new CompressionPlugin({
-        //     filename: '[path][base].gz',
-        //     algorithm: 'gzip',
-        //     test: /\.(js|css|html)$/,
-        //     threshold: 9216,
-        //     minRatio: 0.8
-        // })
         new CompressionPlugin({
-            // filename(pathData) {
-            //     // The `pathData` argument contains all placeholders - `path`/`name`/`ext`/etc
-            //     // Available properties described above, for the `String` notation
-            //     if (/\.css$/.test(pathData.file)) {
-            //         return "[path][base].gz";
-            //     }
-
-
-            //     return "[path][base].gz";
-            // },
             filename: "[path][base].gz",
             algorithm: "gzip",
             test: /\.(js|css|html)$/,

@@ -11,11 +11,11 @@ class Form extends React.Component {
         this.state = {
             input: "",
             section: false,
-            indexofhistory: history.length
+            indexofhistory: history.length,
+            optionalInput: ''
         };
 
     }
-
 
 
     handleSubmit(e) {
@@ -29,7 +29,7 @@ class Form extends React.Component {
 
     handleChangeInput(e) {
         // console.log(history);
-        this.setState({ input: e.target.value });
+        this.setState({ input: e.target.value, optionalInput: e.target.value });
         //console.log(this.state.input);
     }
 
@@ -53,7 +53,9 @@ class Form extends React.Component {
                 //console.log(this.state.indexofhistory);
                 this.setState({ input: history[this.state.indexofhistory + 1] });
                 this.setState({ indexofhistory: this.state.indexofhistory + 1 });
-
+            }
+            else if (this.state.optionalInput !== this.state.input) {
+                this.setState({ input: this.state.optionalInput })
             }
         }
     }

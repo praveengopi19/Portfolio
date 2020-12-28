@@ -26,6 +26,7 @@ import '!!file-loader?name=./offline.html!../public/offline.html'
 //import 'file-loader?name=./sw.js!./sw.js'
 
 import '!!file-loader?name=./pk.svg!../public/pk.svg'
+import '!!file-loader?name=./ogcmd.png!../public/ogcmd.png'
 
 //import worker from "worker-loader!./sw.js"
 

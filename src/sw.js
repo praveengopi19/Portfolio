@@ -1,4 +1,4 @@
-var version = 2
+var version = 3
 var cacheName = `praveengopi19-${version}`
 
 var isOnline = true
@@ -12,13 +12,15 @@ var toBeCached = [
     '/offline.html'
 ]
 
-self.addEventListener('install', function () {
+self.addEventListener('install', function (event) {
     // console.log("Sw installed...")
+    event.waitUntil(hadleActivation())
     self.skipWaiting()
 })
 
-self.addEventListener('activate', function (event) {
-    event.waitUntil(hadleActivation())
+self.addEventListener('activate', async function (event) {
+    await clearCaches()
+    await clients.claim()
 })
 
 
@@ -33,8 +35,7 @@ main()
 
 
 async function hadleActivation() {
-    await clearCaches()
-    await clients.claim()
+
     //console.log("sw activated..")
     await cacheFiles()
 
@@ -106,7 +107,6 @@ async function router(req) {
         let res = await cache.match(reqURL) //check cache
 
         if (res) {
-
             return res   //if yes return it plz
         }
 
@@ -114,22 +114,24 @@ async function router(req) {
         if (!isOnline) {
             //  console.log("No internet")
             let html = await cache.match('/offline.html')
-
             return html
         }
 
-        if (req.headers.get("Accept").includes("text/html")) {
+        if (0 && req.headers.get("Accept").includes("text/html")) {
 
             res = await fetch(req, {
                 method: req.method,
                 headers: req.headers,
                 credentials: "same-origin",
-                redirect: 'follow'
+                redirect: 'manual'
             })
 
-            if (res && (res.ok || res.status == 404)) {
+            //console.log(res.status, res.type, reqURL)
+
+            if (res && (res.ok || res.status == 404 || res.type === 'opaqueredirect')) {
                 return res
             }
+
 
         } else {
             try {
@@ -138,12 +140,13 @@ async function router(req) {
                     method: req.method,
                     headers: req.headers,
                     credentials: "same-origin",
-                    cache: 'no-store'
+                    cache: 'no-cache',
+                    redirect: req.redirect
                 })
 
-                console.log(res)
+                //console.log(res.status, res.type, reqURL, "from non html")
 
-                if (res && (res.ok || res.status == 404)) {
+                if (res && (res.ok || res.status == 404 || res.type === 'opaqueredirect')) {
                     return res
                 }
             }
