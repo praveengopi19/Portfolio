@@ -253,6 +253,7 @@ form {
 }
 
 input {
+  flex            : 1 1 auto;
   display         : inline;
   background-color: transparent;
   outline         : none;
@@ -262,6 +263,10 @@ input {
   font-family     : 'Hack';
   font-weight     : 500;
   font-size       : calc(10px + 1vmin);
+}
+
+label {
+  flex: 0 0 auto;
 }
 
 .parent {
