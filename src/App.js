@@ -10,15 +10,16 @@ import ErrorBoundries from './components/ErrorBoundries';
 const DesktopMain = lazy(() => import("./components/Desktop/DesktopMain"));
 const MobileMain = lazy(() => import("./components/Mobile/MobileMain"));
 
-const Error = () => (<section><div className="error404"><Error404 /></div>
+const Error = () => (<section className="sectionClass"><div className="error404"><Error404 /></div>
+  <h5>Oh no! The requested URL was not found</h5>
   <a href="/"><button className="errorbuttom">Return Home</button></a></section>);
 
 function App() {
   var ua = navigator.userAgent;
   var mobile = /IEMobile|Windows Phone|Lumia/i.test(ua) ? 'w' : /iPhone|iP[oa]d/.test(ua) ? 'i' : /Android/.test(ua) ? 'a' : /BlackBerry|PlayBook|BB10/.test(ua) ? 'b' : /Mobile Safari/.test(ua) ? 's' : /webOS|Mobile|Tablet|Opera Mini|\bCrMo\/|Opera Mobi/i.test(ua) ? 1 : 0;
   return (
-    <div className="App">
-      <Suspense fallback={<section>
+    <>
+      <Suspense fallback={<section className="sectionClass">
         <svg className="spinner" width="174px" height="174px" viewBox="0 0 66 66" >
           <circle className="path" fill="transparent" strokeWidth="2" cx="33" cy="33" r="11" stroke="rgb(61, 157, 209)" />
         </svg>
@@ -39,7 +40,7 @@ function App() {
           }
         </ErrorBoundries>
       </Suspense>
-    </div >
+    </ >
   );
 }
 

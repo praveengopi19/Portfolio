@@ -22,7 +22,8 @@ class ErrorBoundries extends Component {
 
         if (this.state.hasError) {
             return (
-                <section><div className="error404"><img src={ErrorBoun} /></div>
+                <section className="sectionClass"><div className="error404"><img src={ErrorBoun} /></div>
+                    <h5>Oops I'm sorry! Something went wrong.</h5>
                     <Link to="./"><button className="errorbuttom">Return Home</button></Link></section>
             )
         }

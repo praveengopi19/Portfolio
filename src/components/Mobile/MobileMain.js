@@ -13,13 +13,13 @@ import { ReactComponent as Logo } from '../../assets/pk.svg';
 function MobileMain({ mobile }) {
     return (
         <React.Fragment >
-            <header className="headermobile" >
+            <nav className="headermobile" >
                 <Link to="/" className="linksimplified">
                     <Logo style={{ height: "42px", width: "42px", paddingTop: "2px", fill: "#4169E1" }} />
                 </Link>
-            </header>
+            </nav>
             <div className="widthdecider">
-                <div className="mobiletopbanner">
+                <header className="mobiletopbanner">
                     <div className="bannerflex1">
                         <div className="subheader">
                             Hello World, I am <div className="color">Praveen Kumar</div>
@@ -40,8 +40,8 @@ function MobileMain({ mobile }) {
                     <div className="bannerflex2">
                         <BannerImage className="img" style={{ fill: "#4169E1" }} />
                     </div>
-                </div>
-                <div>
+                </header>
+                <section>
                     <div className="mediumHeader">
                         Skills
                      </div>
@@ -63,8 +63,8 @@ function MobileMain({ mobile }) {
                             <li>Adobe XD</li>
                         </ul>
                     </div>
-                </div>
-                <div >
+                </section>
+                <section >
                     <div className="mediumHeader">
                         Projects
                      </div>
@@ -83,25 +83,25 @@ function MobileMain({ mobile }) {
                                                 {project.Demo === "#" ? "" : <a href={project.Demo} target="_blank" className="contactlink" rel="noopener noreferrer">Live Demo</a>}
                                             </div>
                                         </div>
-                                        <div className="tags">{project.Tags.split(',').map((tag, i) => {
+                                        <ul className="tags">{project.Tags.split(',').map((tag, i) => {
                                             return (<li key={tag + i}>
                                                 {tag}
                                             </li>)
-                                        })}</div>
+                                        })}</ul>
                                     </div>
                                 </div>
                                 </li>)
                             })}
                         </ul>
                     </div>
-                </div>
+                </section>
 
                 {mobile ? <div className="visitDesktop" >
                     Visit this website in Desktop to try command-line interface version of my portfolio
                 </div> : ""}
 
 
-                <div>
+                <section>
                     <div className="mediumHeader">
                         Contact
                      </div>
@@ -111,9 +111,9 @@ function MobileMain({ mobile }) {
                         &nbsp; or Looking for a <a href="https://praveengopi19.github.io/Online-Resume" target="_blank" className="contactlink" rel="noopener noreferrer">Resume</a>.
                     </p>
 
-                </div>
+                </section>
 
-                <div>
+                <section>
                     <div className="skillli" style={{ justifyContent: "center" }}>
                         <ul >
                             <li><a href="https://www.linkedin.com/in/praveengopi19/" target="_blank" rel="noopener noreferrer"><LinkedIn className="sociallinks linkedin" /></a></li>
@@ -123,10 +123,10 @@ function MobileMain({ mobile }) {
                             <li><a href="https://twitter.com/praveengopi_19" target="_blank" rel="noopener noreferrer"><Twitter className="sociallinks twitter" /></a></li>
                         </ul>
                     </div>
-                </div>
-                <div className="footermobile">Made With ❤ By Praveen Kumar<br />
+                </section>
+                <footer className="footermobile">Made With ❤ By Praveen Kumar<br />
                 © All Rights Reserved
-                </div>
+                </footer>
             </div>
         </React.Fragment >
     )

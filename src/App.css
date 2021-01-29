@@ -34,6 +34,7 @@ p {
   color              : #63738b;
 }
 
+
 input[type=text]::-ms-clear {
   display: none;
 }
@@ -51,7 +52,7 @@ input[type=text]::-ms-clear {
   background-color: #4169E1;
   padding         : 8px 12px;
   cursor          : pointer;
-  margin-top      : 30px
+  margin-top      : 0px
 }
 
 .linksimplified {

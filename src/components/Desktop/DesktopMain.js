@@ -7,31 +7,31 @@ function DesktopMain(props) {
     return (
         <React.Fragment>
             <div className="App-header" >
-                < div className="start" >
+                <nav className="start" >
                     <Link to="/" className="linkdesktop"><Logo style={{ height: "42px", width: "42px", paddingTop: "5px", fill: "#fff" }} /></Link>
-                </div>
-                <div className="commandLine">
-                    <div className="header">
+                </nav>
+                <section className="commandLine">
+                    <header className="header">
                         <div className="reddot">
                         </div>
                         <div className="yellowdot">
                         </div>
                         <div className="greendot">
                         </div>
-                    </div>
+                    </header>
                     <CommandLine />
-                    <div className="footer">
+                    <footer className="footer">
                         <div>ls - list menu </div>
                         <div className="footerspacing">cd [DirName] - get into directory </div>
                         <div className="footerspacing">cd .. - go back </div>
                         <div className="footerspacing">clear - clear terminal </div>
                         <div className="footerspacing">display - display content of the page </div>
                         <div >key up and key down - switch between command history </div>
-                    </div>
-                </div>
-                <div className="end">
+                    </footer>
+                </section>
+                <footer className="end">
                     <p><Link to="/" className="link">Simplified version of my portfolio</Link></p>
-                </div>
+                </footer>
             </div>
 
         </React.Fragment >);

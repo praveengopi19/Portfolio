@@ -1,16 +1,13 @@
-var version = 3
+var version = 5
 var cacheName = `praveengopi19-${version}`
 
 var isOnline = true
 
 var toBeCached = [
-    '/media/Hack-Regular.woff',
-    '/media/Inter-SemiBold.woff2',
-    '/media/Inter-Medium.woff2',
-    '/media/Inter-Bold.woff2',
     '/media/errorboun.svg',
     '/offline.html'
 ]
+
 
 self.addEventListener('install', function (event) {
     // console.log("Sw installed...")
@@ -96,7 +93,6 @@ async function cacheFiles() {
 
 }
 
-
 async function router(req) {
     var url = new URL(req.url)
     var reqURL = url.pathname
@@ -109,6 +105,25 @@ async function router(req) {
         if (res) {
             return res   //if yes return it plz
         }
+        else if (reqURL.match('woff')) {
+            try {
+                var response = await fetch(reqURL, {
+                    method: "GET",
+                    cache: "no-store",
+                    credentials: "omit"
+                })
+
+                if (response && response.ok) {
+                    await cache.put(reqURL, response.clone())
+                    return response
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
+
+
 
 
         if (!isOnline) {
