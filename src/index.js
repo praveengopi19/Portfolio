@@ -1,6 +1,6 @@
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-import React from 'react';
+import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 import './App.css';
@@ -15,20 +15,20 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { configReducer } from './Redux/Reducers/configReducer';
 
-import '!!file-loader?name=./manifest.json!../public/manifest.json'
-import '!!file-loader?name=./icon-192x192.png!../public/icon-192x192.png'
-import '!!file-loader?name=./icon-256x256.png!../public/icon-256x256.png'
-import '!!file-loader?name=./icon-384x384.png!../public/icon-384x384.png'
-import '!!file-loader?name=./icon-512x512.png!../public/icon-512x512.png'
+// {import '!!file-loader?name=./manifest.json!../public/manifest.json'
+// import '!!file-loader?name=./icon-192x192.png!../public/icon-192x192.png'
+// import '!!file-loader?name=./icon-256x256.png!../public/icon-256x256.png'
+// import '!!file-loader?name=./icon-384x384.png!../public/icon-384x384.png'
+// import '!!file-loader?name=./icon-512x512.png!../public/icon-512x512.png'
 
-import '!!file-loader?name=./offline.html!../public/offline.html'
+// import '!!file-loader?name=./offline.html!../public/offline.html'
 
-//import 'file-loader?name=./sw.js!./sw.js'
+// import 'file-loader?name=./sw.js!./sw.js'
 
-import '!!file-loader?name=./pk.svg!../public/pk.svg'
-import '!!file-loader?name=./ogcmd.png!../public/ogcmd.png'
+// import '!!file-loader?name=./pk.svg!../public/pk.svg'
+// import '!!file-loader?name=./ogcmd.png!../public/ogcmd.png'
 
-//import worker from "worker-loader!./sw.js"
+// import worker from "worker-loader!./sw.js"}
 
 import worker from "./sw.js"
 
@@ -36,13 +36,13 @@ import worker from "./sw.js"
 const store = createStore(configReducer, {}, applyMiddleware());
 
 ReactDOM.render(
-  <React.StrictMode>
+  <StrictMode>
     <Provider store={store}>
       <Router>
         <App />
       </Router>
     </Provider>
-  </React.StrictMode>,
+  </StrictMode>,
   document.getElementById('root')
 );
 

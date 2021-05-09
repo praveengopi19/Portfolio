@@ -1,6 +1,3 @@
-import React from 'react';
-
-
 const SkillsContent = () => {
     return (
         <div style={{ listStyle: "none" }}>

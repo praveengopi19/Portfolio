@@ -1,5 +1,3 @@
-import React from 'react';
-
 const MainInputLs = () => {
     return (
         <div style={{ listStyle: "none" }}>

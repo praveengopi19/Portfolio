@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { Switch, Route, Link } from 'react-router-dom';
 
 import { ReactComponent as Error404 } from './assets/icons/error.svg'
@@ -9,6 +9,7 @@ import ErrorBoundries from './components/ErrorBoundries';
 
 const DesktopMain = lazy(() => import("./components/Desktop/DesktopMain"));
 const MobileMain = lazy(() => import("./components/Mobile/MobileMain"));
+
 
 const Error = () => (<section className="sectionClass"><div className="error404"><Error404 /></div>
   <h5>Oh no! The requested URL was not found</h5>

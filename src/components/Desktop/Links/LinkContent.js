@@ -1,5 +1,3 @@
-import React from 'react';
-
 const ContactContent = () => {
     return (
         <div style={{ listStyle: "none" }}>

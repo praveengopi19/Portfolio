@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import Form from '../Form';
 
-class SkillsInput extends React.Component {
+class SkillsInput extends Component {
     render() {
         return (
             <Form direcotry={"skills"} />

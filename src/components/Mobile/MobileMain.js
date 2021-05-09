@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as BannerImage } from '../../BannerImage.svg';
 import { projects } from '../Desktop/Projects/projectArray';
@@ -12,7 +12,7 @@ import { ReactComponent as Logo } from '../../assets/pk.svg';
 
 function MobileMain({ mobile }) {
     return (
-        <React.Fragment >
+        <Fragment >
             <nav className="headermobile" >
                 <Link to="/" className="linksimplified">
                     <Logo style={{ height: "42px", width: "42px", paddingTop: "2px", fill: "#4169E1" }} />
@@ -128,8 +128,8 @@ function MobileMain({ mobile }) {
                 © All Rights Reserved
                 </footer>
             </div>
-        </React.Fragment >
-    )
+        </Fragment >
+    );
 }
 
 export default MobileMain;

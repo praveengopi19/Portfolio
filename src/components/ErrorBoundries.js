@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import ErrorBoun from '../assets/icons/errorboun.svg';
 import { Link } from 'react-router-dom';
 

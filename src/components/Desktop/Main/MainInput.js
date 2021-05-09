@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import Form from '../Form';
 
-class MainInput extends React.Component {
+class MainInput extends Component {
 
     render() {
         return (

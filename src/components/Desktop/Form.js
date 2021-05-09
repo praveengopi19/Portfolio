@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleInput } from '../../Redux/Actions/actionCreator';
 import { history } from '../../Redux/Actions/actionCreator';
 
-class Form extends React.Component {
+class Form extends Component {
 
     constructor(props) {
         super(props);

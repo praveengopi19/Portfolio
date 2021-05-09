@@ -1,11 +1,11 @@
-import React from 'react';
+import { Fragment } from 'react';
 import CommandLine from './CommandLine';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/pk.svg';
 
 function DesktopMain(props) {
     return (
-        <React.Fragment>
+        <Fragment>
             <div className="App-header" >
                 <nav className="start" >
                     <Link to="/" className="linkdesktop"><Logo style={{ height: "42px", width: "42px", paddingTop: "5px", fill: "#fff" }} /></Link>
@@ -34,7 +34,8 @@ function DesktopMain(props) {
                 </footer>
             </div>
 
-        </React.Fragment >);
+        </Fragment >
+    );
 }
 
 export default DesktopMain;

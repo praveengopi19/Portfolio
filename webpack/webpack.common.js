@@ -2,6 +2,9 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+
+const toBeCopied = ["../public/pwa icons", "../public/manifest.json", "../public/offline.html", "../public/pk.svg", "../public/ogcmd.png"]
 
 module.exports = {
     entry: {
@@ -42,6 +45,12 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, '../public/index.html'),
             filename: 'index.html',
+        }),
+        new CopyWebpackPlugin({
+            patterns: toBeCopied.map(pathOfAsset => {
+                return { from: path.resolve(__dirname, pathOfAsset).replace(/\\/g, "/") }
+            })
+
         })
     ]
 }
