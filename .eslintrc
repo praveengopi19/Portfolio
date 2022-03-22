@@ -22,9 +22,13 @@
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:import/errors"
+    "plugin:import/errors",
+    "airbnb", "airbnb/hooks"
   ],
   "rules": {
-    "react/prop-types":"off"
+    "react/prop-types":"off",
+    "prefer-const":"error",
+    "no-var":"error",
+    "linebreak-style":["error","windows"]
   }
 }
