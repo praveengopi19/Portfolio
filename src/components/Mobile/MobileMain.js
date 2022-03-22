@@ -25,7 +25,7 @@ function MobileMain({ mobile }) {
                             Hello World, I am <div className="color">Praveen Kumar</div>
                         </div>
                         <div className="topcontent">
-                            A Full stack Web developer
+                            A Front-end Web developer
                         </div>
                         {mobile ? "" :
                             <div className="cmdanimate">
