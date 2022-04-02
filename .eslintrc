@@ -26,9 +26,11 @@
     "airbnb", "airbnb/hooks"
   ],
   "rules": {
+    "react/react-in-jsx-scope":"off",
     "react/prop-types":"off",
     "prefer-const":"error",
     "no-var":"error",
-    "linebreak-style":["error","windows"]
+    "linebreak-style":["error","windows"],
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
