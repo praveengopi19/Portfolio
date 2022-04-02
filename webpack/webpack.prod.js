@@ -1,27 +1,25 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
-const webpack = require('webpack');
 
-const OptimiseCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const { javascript } = require('webpack');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
   mode: 'production',
   output: {
-    filename: 'js/[name]-[contentHash].js',
-    chunkFilename: 'js/[name]-[contentHash:8].chunk.js',
+    filename: 'js/[name]-[contenthash].js',
+    chunkFilename: 'js/[name]-[contenthash].chunk.js',
     publicPath: '/',
     path: path.resolve(__dirname, '../build'),
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles/[name]-[contentHash].css',
-      chunkFilename: 'styles/[name]-[contentHash:8].chunk.css',
+      filename: 'styles/[name]-[contenthash].css',
+      chunkFilename: 'styles/[name]-[contenthash:8].chunk.css',
     }),
     new CompressionPlugin({
       filename: '[path][base].gz',
@@ -44,14 +42,9 @@ module.exports = merge(common, {
       },
       {
         test: /\.(png|jpe?g|gif|woff2|woff|tff)$/,
-        loader: 'file-loader',
-        // options: {
-        //     outputPath: 'media',
-        //     filename: '[name].[ext]'
-        // }
-        options: {
-          outputPath: 'media',
-          name: '[name].[ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'media/[name].[ext]',
         },
       },
       {
@@ -68,21 +61,25 @@ module.exports = merge(common, {
     ],
   },
   optimization: {
+    chunkIds: 'named',
+    moduleIds: 'named',
+    concatenateModules: false,
     minimize: true,
-    minimizer: [new OptimiseCssAssetsPlugin(), new TerserPlugin({
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin({
       terserOptions: {
         format: {
           comments: false,
         },
       },
-      extractComments: {
-        condition: /^\**!|@preserve|@license|@cc_on/i,
-        filename: (file) => file.replace(/\.(\w+)($|\?)/, '.$1.LICENSE.txt$2'),
-      },
+      extractComments: false,
     })],
     splitChunks: {
+      minSize: 1,
+      maxInitialRequests: 100,
+      maxAsyncRequests: 100,
       chunks: 'all',
       name: false,
+      // minChunks: 2,
     },
     runtimeChunk: {
       name: (entrypoint) => `runtime-${entrypoint.name}`,
