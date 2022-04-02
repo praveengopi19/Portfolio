@@ -42,11 +42,9 @@ module.exports = merge(common, {
       },
       {
         test: /\.(png|jpe?g|gif|woff2|woff|tff)$/,
-        loader: 'file-loader',
-        options: {
-          publicPath: '/media',
-          outputPath: 'media',
-          name: '[name].[ext]',
+        type: 'asset/resource',
+        generator: {
+          filename: 'media/[name].[ext]',
         },
       },
       {
