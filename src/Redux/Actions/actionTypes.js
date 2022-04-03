@@ -1,2 +1,0 @@
-export const COMMAND_RENDER = 'COMMAND_RENDER';
-export const CLEAR_TERMINAL = 'CLEAR_TERMINAL';

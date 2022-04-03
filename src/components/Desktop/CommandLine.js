@@ -30,7 +30,7 @@ import LsError from './Error/LsError';
 import NoCommand from './Error/NoCommand';
 import NoDirError from './Error/NoDirError';
 
-import promptReducer from '../../Redux/Reducers/promptReducer';
+import { cmdReducer } from '../../useReducerUtils/Reducers/cmdPromptReducer';
 import { DispatchContext } from '../contextHelper';
 
 const componentMap = {
@@ -53,7 +53,7 @@ const componentMap = {
 };
 
 function CommandLine() {
-  const [state, dispatch] = useReducer(promptReducer, [{ name: 'mainInput', Date: Date.now() }]);
+  const [state, dispatch] = useReducer(cmdReducer, [{ name: 'mainInput', Date: Date.now() }]);
 
   return (
     <DispatchContext.Provider value={dispatch}>
