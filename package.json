@@ -9,6 +9,7 @@
     "start": "webpack serve --config webpack/webpack.dev.js",
     "build": "webpack --config webpack/webpack.prod.js",
     "deploy": "gh-pages -d build",
+    "fix-eslint": "eslint --fix --ext .js,.jsx .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

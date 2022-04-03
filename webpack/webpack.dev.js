@@ -13,13 +13,13 @@ module.exports = merge(common, {
   devServer: {
     port: 3000,
     static: {
-      directory: path.resolve(__dirname, '../dist')
+      directory: path.resolve(__dirname, '../dist'),
     },
     // liveReload: true,
     compress: true,
     open: true,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   stats: {
     colors: true,

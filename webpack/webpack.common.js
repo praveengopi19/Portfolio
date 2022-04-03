@@ -46,7 +46,7 @@ module.exports = {
       filename: 'index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: toBeCopied.map((pathOfAsset) => ({ from: path.resolve(__dirname, pathOfAsset).replace(/\\/g, '/') }))
+      patterns: toBeCopied.map((pathOfAsset) => ({ from: path.resolve(__dirname, pathOfAsset).replace(/\\/g, '/') })),
     }),
-  ]
+  ],
 };
