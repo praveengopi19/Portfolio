@@ -26,7 +26,7 @@ function MobileMain({ mobile }) {
             <div className="subheader">
               Hello World, I am
               {' '}
-<div className="color">Praveen Kumar</div>
+              <div className="color">Praveen Kumar</div>
             </div>
             <div className="topcontent">
               A Front-end Web developer
@@ -36,12 +36,12 @@ function MobileMain({ mobile }) {
                 <Link to="/cmd" className="cmdlink">
                   {' '}
                   Try command-line interface version of my portfolio&nbsp;
-                                <span>
-                                  <svg style={{ transform: 'translateY(2px)' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19" width="24" height="24">
-                                    <path fill="none" d="M0 0h24v24H0z" />
-                                    <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9 12v2h6v-2h-6zm-3.586-3l-2.828 2.828L7 16.243 11.243 12 7 7.757 5.586 9.172 8.414 12z" fill="rgba(65,105,225,1)" />
-                                  </svg>
-                                </span>
+                  <span>
+                    <svg style={{ transform: 'translateY(2px)' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19" width="24" height="24">
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="M3 3h18a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm9 12v2h6v-2h-6zm-3.586-3l-2.828 2.828L7 16.243 11.243 12 7 7.757 5.586 9.172 8.414 12z" fill="rgba(65,105,225,1)" />
+                    </svg>
+                  </span>
                 </Link>
               </div>
             )}
@@ -83,27 +83,27 @@ function MobileMain({ mobile }) {
               {projects.map((project) => (
                 <li key={project.index + project.Title}>
                   <div>
-                      <div className="projecttitle">{project.Title}</div>
-                      <div>
-                          <div>{project.Description}</div>
-                          {project.Mycontribution ? <div>{project.Mycontribution}</div> : ''}
-                          <div className="demorepo">
-                              <div>
-                                  {project.Repo === '#' ? '' : <a href={project.Repo} target="_blank" className="contactlink" rel="noopener noreferrer">Source Code</a>}
-                                </div>
-                              <div>
-                                  {project.Demo === '#' ? '' : <a href={project.Demo} target="_blank" className="contactlink" rel="noopener noreferrer">Live Demo</a>}
-                                </div>
-                            </div>
-                          <ul className="tags">
-                              {project.Tags.split(',').map((tag, i) => (
-                                  <li key={tag + i}>
-          {tag}
-        </li>
-                                ))}
-                            </ul>
+                    <div className="projecttitle">{project.Title}</div>
+                    <div>
+                      <div>{project.Description}</div>
+                      {project.Mycontribution ? <div>{project.Mycontribution}</div> : ''}
+                      <div className="demorepo">
+                        <div>
+                          {project.Repo === '#' ? '' : <a href={project.Repo} target="_blank" className="contactlink" rel="noopener noreferrer">Source Code</a>}
                         </div>
+                        <div>
+                          {project.Demo === '#' ? '' : <a href={project.Demo} target="_blank" className="contactlink" rel="noopener noreferrer">Live Demo</a>}
+                        </div>
+                      </div>
+                      <ul className="tags">
+                        {project.Tags.split(',').map((tag, i) => (
+                          <li key={tag + i}>
+                            {tag}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
+                  </div>
                 </li>
               ))}
             </ul>

@@ -1,9 +1,8 @@
-import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import CommandLine from './CommandLine';
 import { ReactComponent as Logo } from '../../assets/pk.svg';
 
-function DesktopMain(props) {
+function DesktopMain() {
   return (
     <div className="App-header">
       <nav className="start">
