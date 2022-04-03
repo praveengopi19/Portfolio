@@ -1,87 +1,70 @@
-import { Component } from 'react';
+import { useReducer } from 'react';
 
-//main
+// main
 import MainInput from './Main/MainInput';
 import MainInputLs from './Main/MainInputLs';
 
-//Projects
+// Projects
 import ProjectsInput from './Projects/ProjectsInput';
 import ProjectInputContent from './Projects/ProjectInputContent';
 
-//About me
+// About me
 import AboutMeInput from './AboutMe/AboutMeInput';
 import AboutMeContent from './AboutMe/AboutMeContent';
 
-//Skills
+// Skills
 import SkillsInput from './Skills/SkillsInput';
 import SkillsContent from './Skills/SkillsContent';
 
-//Links
+// Links
 import LinkInput from './Links/LinkInput';
 import LinkContent from './Links/LinkContent';
 
-//Contact
+// Contact
 import ContactInput from './contact/ContactInput';
 import ContactContent from './contact/ContactConent';
 
-//Errors
+// Errors
 import InAppropriate from './Error/InAppropriate';
 import LsError from './Error/LsError';
 import NoCommand from './Error/NoCommand';
 import NoDirError from './Error/NoDirError';
 
-import { connect } from 'react-redux';
+import promptReducer from '../../Redux/Reducers/promptReducer';
+import { DispatchContext } from '../contextHelper';
 
-class CommandLine extends Component {
+const componentMap = {
+  mainInput: MainInput,
+  mainInputls: MainInputLs,
+  projectInputContent: ProjectInputContent,
+  projectInput: ProjectsInput,
+  aboutInput: AboutMeInput,
+  aboutInputContent: AboutMeContent,
+  skillsInput: SkillsInput,
+  skillsContent: SkillsContent,
+  linkInput: LinkInput,
+  linkInputContent: LinkContent,
+  contactInput: ContactInput,
+  contactInputContent: ContactContent,
+  lserror: LsError,
+  inappropriate: InAppropriate,
+  nocommand: NoCommand,
+  nodir: NoDirError,
+};
 
+function CommandLine() {
+  const [state, dispatch] = useReducer(promptReducer, [{ name: 'mainInput', Date: Date.now() }]);
 
-    render() {
-
-
-
-        const componentMap = {
-            mainInput: MainInput,
-            mainInputls: MainInputLs,
-            projectInputContent: ProjectInputContent,
-            projectInput: ProjectsInput,
-            aboutInput: AboutMeInput,
-            aboutInputContent: AboutMeContent,
-            skillsInput: SkillsInput,
-            skillsContent: SkillsContent,
-            linkInput: LinkInput,
-            linkInputContent: LinkContent,
-            contactInput: ContactInput,
-            contactInputContent: ContactContent,
-            lserror: LsError,
-            inappropriate: InAppropriate,
-            nocommand: NoCommand,
-            nodir: NoDirError
-        };
-
-        const menu = () => this.props.promp.map((comp) => {
-            const ComponentFinder = componentMap[comp.name];
-            // console.log(comp.name, comp.Date);
-            return <ComponentFinder key={comp.Date} />;
-        });
-
-
-        //console.log(this.props.prompt.name);
-        return (
-            <div className="command">
-                {menu()}
-
-            </div>
-        );
-    }
-
-
+  return (
+    <DispatchContext.Provider value={dispatch}>
+      <div className="command">
+        { state.map((comp) => {
+          const ComponentFinder = componentMap[comp.name];
+          return <ComponentFinder key={comp.Date} />;
+        })}
+      </div>
+    </DispatchContext.Provider>
+  );
 }
 
-function mapStateToPros(state) {
-    //console.log(state.prompt);
-    return ({ promp: state.prompt });
-}
-
-
-
-export default connect(mapStateToPros, null)(CommandLine);
+export default CommandLine;

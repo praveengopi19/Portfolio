@@ -2,16 +2,10 @@ import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 
 import './App.css';
+import { HashRouter as Router } from 'react-router-dom';
 import App from './App';
 
-
-//Router
-import { HashRouter as Router } from 'react-router-dom';
-
-//reducer
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import { configReducer } from './Redux/Reducers/configReducer';
+// Router
 
 // {import '!!file-loader?name=./manifest.json!../public/manifest.json'
 // import '!!file-loader?name=./icon-192x192.png!../public/icon-192x192.png'
@@ -28,81 +22,73 @@ import { configReducer } from './Redux/Reducers/configReducer';
 
 // import worker from "worker-loader!./sw.js"}
 
-import worker from "./sw.js"
+import worker from './sw.js';
 
-//create centralised store
-const store = createStore(configReducer, {}, applyMiddleware());
+// create centralised store
 
 ReactDOM.render(
   <StrictMode>
-    <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
-    </Provider>
+    <Router>
+      <App />
+    </Router>
   </StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
-var isOnline = ('onLine' in navigator) && navigator.onLine
-
+let isOnline = ('onLine' in navigator) && navigator.onLine;
 
 if ('serviceWorker' in navigator) {
-  var svcWorker
-  var svcResgisteration
+  var svcWorker;
+  var svcResgisteration;
 
-  window.addEventListener('online', function () {
-    isOnline = true
-    sendStatusUpdate()
-  })
+  window.addEventListener('online', () => {
+    isOnline = true;
+    sendStatusUpdate();
+  });
 
-  window.addEventListener('offline', function () {
-    isOnline = false
-    sendStatusUpdate()
-  })
+  window.addEventListener('offline', () => {
+    isOnline = false;
+    sendStatusUpdate();
+  });
 
-
-  swInit().catch(console.error())
+  swInit().catch(console.error());
 }
 
 async function swInit() {
   svcResgisteration = await navigator.serviceWorker.register('./sw.js', {
-    updateViaCache: "none"
-  })
+    updateViaCache: 'none',
+  });
 
-  svcWorker = svcResgisteration.installing || svcResgisteration.waiting || svcResgisteration.active
-  sendStatusUpdate(svcWorker)
-  console.log("Hi from praveengopi19.github.io's service worker")
+  svcWorker = svcResgisteration.installing || svcResgisteration.waiting || svcResgisteration.active;
+  sendStatusUpdate(svcWorker);
+  console.log("Hi from praveengopi19.github.io's service worker");
 
-  navigator.serviceWorker.addEventListener('controllerchange', function onControllerChange(event) {
-    svcWorker = navigator.serviceWorker.controller
-    sendStatusUpdate(svcWorker)
-  })
+  navigator.serviceWorker.addEventListener('controllerchange', (event) => {
+    svcWorker = navigator.serviceWorker.controller;
+    sendStatusUpdate(svcWorker);
+  });
 
-  navigator.serviceWorker.addEventListener('message', onMessage)
+  navigator.serviceWorker.addEventListener('message', onMessage);
 }
 
 async function onMessage(event) {
-  const { data } = event
+  const { data } = event;
 
   if (data.requestStatusUpdate) {
-    sendStatusUpdate(event.ports && event.ports[0])
+    sendStatusUpdate(event.ports && event.ports[0]);
   }
-
 }
 
 async function sendStatusUpdate(target) {
-  sendMsgtoSW({ statusUpdate: { isOnline } }, target)
+  sendMsgtoSW({ statusUpdate: { isOnline } }, target);
 }
 
 async function sendMsgtoSW(msg, target) {
   if (target) {
-    target.postMessage(msg)
-  }
-  else if (svcWorker) {
-    svcWorker.postMessage(msg)
-  }
-  else {
-    navigator.serviceWorker.controller.postMessage(msg)
+    target.postMessage(msg);
+  } else if (svcWorker) {
+    svcWorker.postMessage(msg);
+  } else {
+    navigator.serviceWorker.controller.postMessage(msg);
   }
 }
