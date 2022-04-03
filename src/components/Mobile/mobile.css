@@ -1,0 +1,353 @@
+.linksimplified {
+    color: #303030;
+  }
+
+/* mobile */
+
+.headermobile {
+    box-shadow      : 0 1px 50px 0 rgba(0, 0, 0, 0.09);
+    background-color: #fff;
+    height          : 50px;
+    z-index         : 100;
+    width           : 100%;
+    display         : flex;
+    padding         : 15px 0;
+    font-family     : 'Inter';
+    font-weight     : 700;
+    font-size       : 25px;
+    align-items     : center;
+    justify-content : center;
+    color           : #303030;
+  }
+  
+  .widthdecider {
+    width      : 90vw;
+    font-family: Inter;
+    margin     : 0 auto;
+    padding-top: 40px;
+  }
+  
+  
+  .color {
+    color  : #4169E1;
+    display: inline;
+  }
+  
+  .mobiletopbanner {
+    display        : flex;
+    flex-flow      : row wrap;
+    justify-content: space-evenly;
+    align-items    : center;
+    align-content  : center;
+  }
+  
+  .subheader {
+    font-size  : 35px;
+    font-weight: 700;
+    color      : #303030;
+  }
+  
+  .mediumHeader {
+    padding-top   : 10px;
+    padding-bottom: 10px;
+    font-weight   : 700;
+    font-size     : 1.5rem;
+    color         : #303030;
+  }
+  
+  .topcontent {
+    padding-top: 10px;
+    color      : #63738b;
+    line-height: 36px;
+  }
+  
+  .bannerflex1 {
+    font-size: 20px;
+    flex     : 0 1 96%;
+  }
+  
+  .bannerflex2 {
+    display        : flex;
+    justify-content: center;
+    align-content  : center;
+    flex           : 0 0 auto;
+  }
+  
+  .img {
+    padding-top: 10px;
+    width      : 300px;
+    height     : 300px;
+  }
+  
+  .skillli {
+    display    : flex;
+    flex-wrap  : wrap;
+    padding-top: 10px;
+    font-weight: 600;
+  }
+  
+  ul {
+    padding-inline-start: 0px;
+    margin-block-start  : 0rem;
+    padding             : 0px;
+  }
+  
+  
+  .skillli li:nth-child(n) {
+    padding      : 5px;
+    list-style   : none;
+    display      : inline-block;
+    margin-right : 0.75rem;
+    margin-bottom: 0.5rem;
+    color        : #63738b;
+  }
+  
+  .skillli li:hover {
+  
+    color          : #4169E1;
+    margin-right   : 0.75rem;
+    text-decoration: underline;
+    cursor         : pointer;
+    position       : relative;
+    transition     : width 0.3s ease 0s, left 0.3s ease 0s;
+    transition     : transform 0.3s ease-in-out;
+    transform      : perspective(1px) translateY(-5px) scale(1) translateZ(0);
+  }
+  
+  .skillli li a {
+    color: #63738b;
+  }
+  
+  .skillli li a:hover {
+    color: #4169E1;
+  }
+  
+  
+  .projectsli {
+    font-weight: 600;
+    grid-gap   : 20px 15px;
+    margin     : 0 0;
+    color      : #63738b;
+    padding    : 5px 0px;
+    font-size  : 16px;
+  }
+  
+  
+  .projectsli li:nth-child(n) {
+    margin       : 5px 0px;
+    padding      : 5px 0px;
+    list-style   : none;
+    margin-bottom: 0.5rem;
+    color        : #63738b;
+  }
+  
+  .projecttitle {
+    color    : #4169E1;
+    font-size: 20px
+  }
+  
+  .projectsli div {
+    font-weight: 500;
+    line-height: 2;
+  }
+  
+  .tags {
+    margin-block-start: 2px;
+    margin-block-end  : 5px;
+    display           : inline-flex;
+    flex-flow         : row wrap;
+  
+  }
+  
+  .tags li:nth-child(n) {
+    margin-top      : 5px;
+    margin-bottom   : 5px;
+    font-size       : 13px;
+    padding         : 0 12px;
+    margin-right    : 7px;
+    border-radius   : 16px;
+    width           : auto;
+    height          : 25px;
+    line-height     : 25px;
+    background-color: #E5E5E5;
+  }
+  
+  .demorepo {
+    display        : flex;
+    flex-flow      : row wrap;
+    justify-content: space-between;
+  }
+  
+  
+  .sociallinks {
+    padding: 1px;
+    height : 30px;
+    width  : 30px;
+    fill   : #303030;
+  }
+  
+  .linkedin:hover {
+    fill: #0077B5;
+  }
+  
+  .github:hover {
+    fill: #181717;
+  }
+  
+  .twitter:hover {
+    fill: #1DA1F2;
+  }
+  
+  .facebook:hover {
+    fill: #0A81ED;
+  }
+  
+  .behance:hover {
+    fill: #1769FF;
+  }
+  
+  .footermobile {
+    display         : flex;
+    justify-content : center;
+    margin-top      : -10px;
+    margin-block-end: 10px;
+    color           : #63738b;
+    text-align      : center;
+    line-height     : 2;
+  }
+  
+  
+  .visitDesktop {
+  
+    width          : fit-content;
+    padding        : 10px;
+    justify-content: center;
+    margin         : 5px auto;
+    font-size      : 18px;
+    color          : #EA4C89;
+    text-align     : center;
+    line-height    : 2;
+  }
+  
+  .cmdanimate {
+    margin     : 7px 0;
+    font-size  : 18px;
+    line-height: 1.5;
+    width      : 100%;
+    overflow   : hidden;
+    color      : #63738b;
+  }
+  
+  @keyframes type {
+    from {
+      width: 0;
+    }
+  
+  }
+  
+  
+  .link {
+    color: #FFF;
+  }
+  
+  .link:hover {
+    color: #fff
+  }
+  
+  .contactlink {
+    color: #4169E1;
+  }
+  
+  .contactlink:hover {
+    text-decoration: underline;
+  }
+  
+  .cmdlink {
+    color: #63738b;
+  }
+  
+  .cmdlink:hover {
+    color          : #4169E1;
+    text-decoration: none;
+  }
+  
+  /* /#FF3263 */
+  
+  
+  /*==========  Mobile First Method  ==========*/
+  
+  
+  
+  /* Extra Small Devices, Phones */
+  
+  
+  /* Small Devices, Tablets */
+  @media only screen and (min-width : 768px) {
+    .widthdecider {
+      width      : 75vw;
+      padding-top: 15px;
+    }
+  
+    .mobiletopbanner {
+      justify-content: space-between;
+    }
+  
+    .subheader {
+      font-size: 29px;
+    }
+  
+    .topcontent {
+      padding-top: 11px;
+      line-height: 36px;
+    }
+  
+    .bannerflex1 {
+      font-size: 18px;
+      flex     : 0 1 45%;
+    }
+  
+    .bannerflex2 {
+      display        : flex;
+      justify-content: center;
+      flex           : 0 0 auto;
+    }
+  
+    .img {
+      padding-top: 10px;
+      width      : 250px;
+      height     : 250px;
+    }
+  
+    .sociallinks {
+      padding: 15px;
+      height : 30px;
+      width  : 30px;
+    }
+  
+    .footermobile {
+      margin-top: -25px;
+    }
+  
+  
+  }
+  
+  /* Medium Devices, Desktops */
+  @media only screen and (min-width : 992px) {
+    .img {
+      padding-top: 10px;
+      width      : 400px;
+      height     : 400px;
+    }
+  
+    .subheader {
+      font-size: 40px;
+    }
+  
+  }
+  
+  /* Large Devices, Wide Screens */
+  @media only screen and (min-width : 1200px) {}
+  
+  
+  /* 
+    https://stackoverflow.com/questions/19592968/bootstrap-3-breakpoints-and-media-queries */

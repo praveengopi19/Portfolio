@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import './mobile.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as BannerImage } from '../../BannerImage.svg';
 import { projects } from '../Desktop/Projects/projectArray';
