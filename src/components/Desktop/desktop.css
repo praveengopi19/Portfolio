@@ -1,4 +1,13 @@
 
+@font-face {
+  font-family : 'Hack';
+  font-style  : normal;
+  font-weight : 500;
+  font-display: swap;
+  src         : url("../../assets/fonts/ttf/Hack-Regular.woff") format("woff");
+}
+
+
 .linkdesktop {
     color: #fff;
 }
