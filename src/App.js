@@ -34,15 +34,15 @@ function App() {
         {mobile
           ? (
             <Switch>
-              <Route exact path="/" element={<MobileMain mobile={mobile} />} />
-              <Route component={Error} />
+              <Route path="/" element={<MobileMain mobile={mobile} />} />
+              <Route path="*" element={<Error />} />
             </Switch>
           )
           : (
             <Switch>
-              <Route exact path="/" element={<MobileMain mobile={mobile} />} />
-              <Route exact path="/cmd" component={DesktopMain} />
-              <Route component={Error} />
+              <Route path="/" element={<MobileMain mobile={mobile} />} />
+              <Route path="/cmd" element={<DesktopMain />} />
+              <Route path="*" element={<Error />} />
             </Switch>
           )}
       </ErrorBoundries>
