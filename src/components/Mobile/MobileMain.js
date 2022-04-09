@@ -1,7 +1,7 @@
 import './mobile.css';
 import { Link } from 'react-router-dom';
 import { ReactComponent as BannerImage } from '../../BannerImage.svg';
-import { projects } from '../Desktop/Projects/projectArray';
+import { PROJECTS, SKILLS } from '../constants';
 import { ReactComponent as LinkedIn } from '../../assets/icons/linkedin.svg';
 import { ReactComponent as GitHub } from '../../assets/icons/github.svg';
 import { ReactComponent as Behance } from '../../assets/icons/behance.svg';
@@ -57,20 +57,7 @@ function MobileMain({ mobile }) {
           </div>
           <div className="skillli">
             <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Bootstrap</li>
-              <li>JavaScript</li>
-              <li>PHP</li>
-              <li>MySQL</li>
-              <li>MongoDB</li>
-              <li>React</li>
-              <li>Redux</li>
-              <li>Node.js</li>
-              <li>Express</li>
-              <li>Java</li>
-              <li>Figma</li>
-              <li>Adobe XD</li>
+              {SKILLS.map((skill) => <li>{skill}</li>)}
             </ul>
           </div>
         </section>
@@ -80,7 +67,7 @@ function MobileMain({ mobile }) {
           </div>
           <div className="projectsli" style={{ fontWeight: 600 }}>
             <ul>
-              {projects.map((project) => (
+              {PROJECTS.map((project) => (
                 <li key={project.index + project.Title}>
                   <div>
                     <div className="projecttitle">{project.Title}</div>
@@ -88,12 +75,21 @@ function MobileMain({ mobile }) {
                       <div>{project.Description}</div>
                       {project.Mycontribution ? <div>{project.Mycontribution}</div> : ''}
                       <div className="demorepo">
-                        <div>
-                          {project.Repo === '#' ? '' : <a href={project.Repo} target="_blank" className="contactlink" rel="noopener noreferrer">Source Code</a>}
-                        </div>
-                        <div>
-                          {project.Demo === '#' ? '' : <a href={project.Demo} target="_blank" className="contactlink" rel="noopener noreferrer">Live Demo</a>}
-                        </div>
+                        {
+                          project.Repo !== '#' && (
+                            <div>
+                              <a href={project.Repo} target="_blank" className="contactlink" rel="noopener noreferrer">Source Code</a>
+                            </div>
+                          )
+                        }
+                        {
+                          project.Demo !== '#' && (
+                            <div>
+                              <a href={project.Demo} target="_blank" className="contactlink" rel="noopener noreferrer">Live Demo</a>
+                            </div>
+                          )
+                        }
+
                       </div>
                       <ul className="tags">
                         {project.Tags.split(',').map((tag, i) => (
@@ -125,9 +121,11 @@ function MobileMain({ mobile }) {
             Interested in collaborating or working together, let's discuss via
             {' '}
             <a href="mailto:praveengopi16@gmail.com" className="contactlink" target="_blank" rel="noopener noreferrer">praveengopi16@gmail.com</a>
-                        &nbsp; or Looking for a
+            &nbsp;or Looking for a
             {' '}
-            <a href="https://praveengopi19.github.io/Online-Resume" target="_blank" className="contactlink" rel="noopener noreferrer">Resume</a>
+            <a href="https://drive.google.com/file/d/1c4LXlKHiOU8zUcCGaqQInZxZb2Wm60ym/view?usp=sharing" target="_blank" className="contactlink" rel="noopener noreferrer">Resume</a>
+            /
+            <a href="https://praveengopi19.github.io/Online-Resume" target="_blank" className="contactlink" rel="noopener noreferrer">Online Resume</a>
             .
           </p>
 
