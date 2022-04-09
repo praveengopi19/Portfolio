@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* global clients */
 const version = 5;
 const cacheName = `praveengopi19-${version}`;
 
@@ -8,32 +10,10 @@ const toBeCached = [
   '/offline.html',
 ];
 
-self.addEventListener('install', (event) => {
-  // console.log("Sw installed...")
-  event.waitUntil(hadleActivation());
-  self.skipWaiting();
-});
-
-self.addEventListener('activate', async (event) => {
-  await clearCaches();
-  await clients.claim();
-});
-
-self.addEventListener('message', onSwMessage);
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(router(event.request));
-});
-
-main();
-
-async function hadleActivation() {
-  // console.log("sw activated..")
-  await cacheFiles();
-}
-
-async function main() {
-  await sendMsgtoClients({ requestStatusUpdate: true });
+function onSwMessage({ data }) {
+  if ('statusUpdate' in data) {
+    isOnline = data.statusUpdate.isOnline;
+  }
 }
 
 async function sendMsgtoClients(msg) {
@@ -45,10 +25,28 @@ async function sendMsgtoClients(msg) {
   }));
 }
 
-function onSwMessage({ data }) {
-  if ('statusUpdate' in data) {
-    isOnline = data.statusUpdate.isOnline;
-  }
+async function main() {
+  await sendMsgtoClients({ requestStatusUpdate: true });
+}
+
+async function cacheFiles() {
+  const cacheToBe = await caches.open(cacheName);
+
+  toBeCached.map(async (file) => {
+    const response = await fetch(file, {
+      method: 'GET',
+      credentials: 'omit',
+    });
+
+    if (response && response.ok) {
+      await cacheToBe.put(file, response);
+    }
+  });
+}
+
+async function hadleActivation() {
+  // console.log("sw activated..")
+  await cacheFiles();
 }
 
 async function clearCaches() {
@@ -62,22 +60,6 @@ async function clearCaches() {
   Promise.all(
     oldCacheNames.map((oldcache) => caches.delete(oldcache)),
   );
-}
-
-async function cacheFiles() {
-  const cacheToBe = await caches.open(cacheName);
-
-  toBeCached.map(async (file) => {
-    const response = await fetch(file, {
-      method: 'GET',
-      cache: 'no-store',
-      credentials: 'omit',
-    });
-
-    if (response && response.ok) {
-      await cacheToBe.put(file, response);
-    }
-  });
 }
 
 async function router(req) {
@@ -95,7 +77,6 @@ async function router(req) {
       try {
         const response = await fetch(reqURL, {
           method: 'GET',
-          cache: 'no-store',
           credentials: 'omit',
         });
 
@@ -134,7 +115,6 @@ async function router(req) {
           method: req.method,
           headers: req.headers,
           credentials: 'same-origin',
-          cache: 'no-cache',
           redirect: req.redirect,
         });
 
@@ -155,3 +135,22 @@ async function router(req) {
   const res = await fetch(req);
   return res;
 }
+
+self.addEventListener('install', (event) => {
+  // console.log("Sw installed...")
+  event.waitUntil(hadleActivation());
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', async () => {
+  await clearCaches();
+  await clients.claim();
+});
+
+self.addEventListener('message', onSwMessage);
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(router(event.request));
+});
+
+main();
