@@ -37,24 +37,24 @@ const PROJECTS = [
     Demo: '#',
     Repo: 'https://github.com/praveengopi19/Attendance-Application',
   },
-  {
-    index: 4,
-    Title: 'Trafalgar',
-    Type: 'Pet project',
-    Description: 'Responsive Landing page for Virtual healthcare system. This web page was developed with reference UI, designed in Figma. The main goal of this website is to get practice in developing web page from UI design.',
-    Tags: 'HTML, CSS, JavaScript',
-    Demo: 'https://praveengopi19.github.io/Trafalgar/',
-    Repo: 'https://github.com/praveengopi19/Trafalgar',
-  },
-  {
-    index: 5,
-    Title: 'To Do List',
-    Type: 'Pet project',
-    Description: 'A web application to add and track the daily task. The tasks are stored in browser local storage, thus one track daily task by running a single HTML file rather than using it in online.',
-    Tags: 'HTML, CSS, JavaScript, LocalStorage',
-    Demo: 'https://praveengopi19.github.io/To-Do-List/',
-    Repo: 'https://github.com/praveengopi19/To-Do-List',
-  },
+//   {
+//     index: 4,
+//     Title: 'Trafalgar',
+//     Type: 'Pet project',
+//     Description: 'Responsive Landing page for Virtual healthcare system. This web page was developed with reference UI, designed in Figma. The main goal of this website is to get practice in developing web page from UI design.',
+//     Tags: 'HTML, CSS, JavaScript',
+//     Demo: 'https://praveengopi19.github.io/Trafalgar/',
+//     Repo: 'https://github.com/praveengopi19/Trafalgar',
+//   },
+//   {
+//     index: 5,
+//     Title: 'To Do List',
+//     Type: 'Pet project',
+//     Description: 'A web application to add and track the daily task. The tasks are stored in browser local storage, thus one track daily task by running a single HTML file rather than using it in online.',
+//     Tags: 'HTML, CSS, JavaScript, LocalStorage',
+//     Demo: 'https://praveengopi19.github.io/To-Do-List/',
+//     Repo: 'https://github.com/praveengopi19/To-Do-List',
+//   },
 ];
 
-export {PROJECTS, SKILLS}
+export { PROJECTS, SKILLS };
